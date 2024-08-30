@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
 const bannerRouter = require("./routes/banner");
 const categoryRouter = require("./routes/category");
+const dotenv = require('dotenv').config();
 //Defind the port number the server will listen on
 const PORT = 3000;
 
@@ -11,7 +12,7 @@ const PORT = 3000;
 //because it give us the starting point
 const app = express();
 //mongodb String
-const DB = "mongodb+srv://danikalafe:danikalafe@cluster0.u7q5q.mongodb.net/";
+const DB = process.env.DB;
 //middleware - to register routes or to mount routes
 app.use(express.json());
 app.use(authRouter);
