@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
 const bannerRouter = require("./routes/banner");
 const categoryRouter = require("./routes/category");
-const dotenv = require('dotenv').config();
+const dotenv = require("dotenv").config();
 //Defind the port number the server will listen on
 const PORT = 3000;
 
