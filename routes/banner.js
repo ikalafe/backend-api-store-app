@@ -13,4 +13,13 @@ bannerRouter.post("/api/banner", async (req, res) => {
   }
 });
 
+bannerRouter.get("/api/banner", async (req, res) => {
+  try {
+    const banners = await Banner.find();
+    return res.status(200).send(banners);
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+});
+
 module.exports = bannerRouter;
