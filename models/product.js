@@ -34,7 +34,7 @@ const productShema = mongoose.Schema({
   ],
   popular: {
     type: Boolean,
-    default: true
+    default: false
   },
   recommend: {
     type: Boolean,
