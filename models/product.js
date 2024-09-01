@@ -22,7 +22,7 @@ const productShema = mongoose.Schema({
     type: String,
     required: true
   },
-  supCategory: {
+  subCategory: {
     type: String,
     required: true
   },
