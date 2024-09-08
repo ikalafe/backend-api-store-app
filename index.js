@@ -8,6 +8,7 @@ const subcategoryRouter = require("./routes/sub_category");
 const productRouter = require("./routes/product");
 const productRating = require("./routes/product_review");
 const dotenv = require("dotenv").config();
+const cors = require("cors");
 //Defind the port number the server will listen on
 const PORT = 3000;
 
@@ -18,6 +19,7 @@ const app = express();
 const DB = process.env.DB;
 //middleware - to register routes or to mount routes
 app.use(express.json());
+app.use(cors());// Enable cors for all routes and origin
 app.use(authRouter);
 app.use(bannerRouter);
 app.use(categoryRouter);
