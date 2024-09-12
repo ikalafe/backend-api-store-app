@@ -44,7 +44,7 @@ authRouter.post("/api/signin", async (req, res) => {
         //remove sensitive information
         const { password, ...userWithoutPassword } = findUser._doc;
         //send the response
-        res.json({ token, ...userWithoutPassword });
+        res.json({ token, user: userWithoutPassword });
       }
     }
   } catch (e) {
