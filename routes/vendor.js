@@ -33,11 +33,11 @@ vendorRouter.post("/api/vendor/signin", async (req, res) => {
     const { email, password } = req.body;
     const findVendor = await Vendor.findOne({ email });
     if (!findVendor) {
-      return res.status(400).json({ msg: "Vendor Not Found with this email" });
+      return res.status(400).json({ msg: "فروشنده با این ایمیل یافت نشد" });
     } else {
       const isMatch = await bcrypt.compare(password, findVendor.password);
       if (!isMatch) {
-        res.status(400).json({ msg: "Incorrect password" });
+        res.status(400).json({ msg: "پسورد نادرست است" });
       } else {
         const token = jwt.sign({ id: findVendor._id }, "passwordKey");
         //remove sensitive information

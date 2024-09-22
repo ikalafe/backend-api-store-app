@@ -10,6 +10,8 @@ productRouter.post("/api/add-product", async (req, res) => {
       quantity,
       description,
       category,
+      vendorId,
+      fullName,
       subCategory,
       images
     } = req.body;
@@ -19,6 +21,8 @@ productRouter.post("/api/add-product", async (req, res) => {
       quantity,
       description,
       category,
+      vendorId,
+      fullName,
       subCategory,
       images
     });
