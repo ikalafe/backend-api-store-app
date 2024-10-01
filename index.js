@@ -8,6 +8,7 @@ const subcategoryRouter = require("./routes/sub_category");
 const productRouter = require("./routes/product");
 const productReviewRouter = require("./routes/product_review");
 const vendorRouter = require("./routes/vendor");
+const orderRouter = require("./routes/order");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 //Defind the port number the server will listen on
@@ -28,6 +29,7 @@ app.use(subcategoryRouter);
 app.use(productRouter);
 app.use(productReviewRouter);
 app.use(vendorRouter);
+app.use(orderRouter);
 
 mongoose.connect(DB).then(() => {
   console.log("mongodb connected");

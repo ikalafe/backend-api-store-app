@@ -49,6 +49,14 @@ const orderSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  proccessing: {
+    type: Boolean,
+    default: true
+  },
+  delivered: {
+    type: Boolean,
+    default: false
+  },
   createdAt: {
     type: Number,
     required: true
