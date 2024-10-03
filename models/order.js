@@ -49,7 +49,7 @@ const orderSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  proccessing: {
+  processing: {
     type: Boolean,
     default: true
   },
