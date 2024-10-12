@@ -68,23 +68,23 @@ orderRouter.delete("/api/orders/:id", async (req, res) => {
     // Extract the id from the request parameter
     const { id } = req.params;
     // Find and delete the order the data base using the extracted _id
-    const deletedOrder = await Order.findByIdAndDelete(id)
+    const deletedOrder = await Order.findByIdAndDelete(id);
     // Check if an order was found and deleted
-    if(!deletedOrder) {
+    if (!deletedOrder) {
       // If no order was found with the provided _id return 404
-      return res.state(404).json({msg: "سفارش پیدا نشد"})
-    }else {
+      return res.state(404).json({ msg: "سفارش پیدا نشد" });
+    } else {
       // If the order was successfully deleted, return 200 status with a success message
-      return res.status(200).json({msg: "سفارش با موفقیت حذف شد"})
+      return res.status(200).json({ msg: "سفارش با موفقیت حذف شد" });
     }
   } catch (e) {
     // If an error occures during the process, return a 500 status with the error message
-    res.status(500).json({error: e.message}) ;
+    res.status(500).json({ error: e.message });
   }
 });
 
 // Get route for fetching orders by vendor ID
-orderRouter.get("/api/orders/:vendorId", async (req, res) => {
+orderRouter.get("/api/orders/vendors/:vendorId", async (req, res) => {
   try {
     // Extract the vendorId from request parameters
     const { vendorId } = req.params;
@@ -98,6 +98,42 @@ orderRouter.get("/api/orders/:vendorId", async (req, res) => {
     return res.status(200).json(orders);
   } catch (e) {
     // Handle any errors that occure during the order retrieval process
+    res.status(500).json({ error: e.message });
+  }
+});
+
+orderRouter.patch("/api/orders/:id/delivered", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedOrder = await Order.findByIdAndUpdate(
+      id,
+      { delivered: true },
+      { new: true }
+    );
+    if (!updatedOrder) {
+      return res.status(404).json({ msg: "سفارش یافت نشد!" });
+    } else {
+      return res.status(200).json(updatedOrder);
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+orderRouter.patch("/api/orders/:id/processing", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedOrder = await Order.findByIdAndUpdate(
+      id,
+      { processing: false },
+      { new: true }
+    );
+    if (!updatedOrder) {
+      return res.status(404).json({ msg: "سفارش یافت نشد!" });
+    } else {
+      return res.status(200).json(updatedOrder);
+    }
+  } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
