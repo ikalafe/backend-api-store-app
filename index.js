@@ -18,7 +18,7 @@ const PORT = 3000;
 //because it give us the starting point
 const app = express();
 //mongodb String
-const DB = process.env.DB;
+const DB = "mongodb+srv://danikalafe:danikalafe@cluster0.u7q5q.mongodb.net/";
 //middleware - to register routes or to mount routes
 app.use(express.json());
 app.use(cors());// Enable cors for all routes and origin

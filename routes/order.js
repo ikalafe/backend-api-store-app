@@ -17,7 +17,7 @@ orderRouter.post("/api/orders", async (req, res) => {
       category,
       image,
       buyerId,
-      vendorId
+      vendorId,
     } = req.body;
     const createdAt = new Date().getMilliseconds(); // Get the current date
     // Create new order instance with the extracted field
@@ -34,7 +34,7 @@ orderRouter.post("/api/orders", async (req, res) => {
       image,
       buyerId,
       vendorId,
-      createdAt
+      createdAt,
     });
     await order.save();
     return res.status(201).json();
@@ -107,7 +107,7 @@ orderRouter.patch("/api/orders/:id/delivered", async (req, res) => {
     const { id } = req.params;
     const updatedOrder = await Order.findByIdAndUpdate(
       id,
-      { delivered: true },
+      { delivered: true, processing: false },
       { new: true }
     );
     if (!updatedOrder) {
@@ -125,7 +125,7 @@ orderRouter.patch("/api/orders/:id/processing", async (req, res) => {
     const { id } = req.params;
     const updatedOrder = await Order.findByIdAndUpdate(
       id,
-      { processing: false },
+      { processing: false, delivered: false },
       { new: true }
     );
     if (!updatedOrder) {
